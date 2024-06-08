@@ -8,7 +8,7 @@ import 'tachyons';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Hello />
+    <Hello greeting={'Welcome to React boyeeee!'} />
   </React.StrictMode>
 );
 
