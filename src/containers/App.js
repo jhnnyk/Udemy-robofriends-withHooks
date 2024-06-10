@@ -15,6 +15,7 @@ function App() {
   // }
   const [robots, setRobots] = useState([]) // returns our initial state 'robots' and a function to change that state 'setRobots'
   const [searchfield, setSearchfield] = useState('') // using array destructuring - a new javascript feature
+  const [count, setCount] = useState(0)
 
   // lifecycle hook
   // componentDidMount() {
@@ -25,8 +26,9 @@ function App() {
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
-      .then(users => {setRobots(users)})
-  }, [])
+      .then(users => { setRobots(users) })
+    console.log(count)
+  }, [count]) // only run if count changes
 
   const onSearchChange = (event) => {
     setSearchfield(event.target.value)
@@ -43,6 +45,7 @@ function App() {
     return (
       <div className="tc">
         <h1 className="f1">RoboFriends</h1>
+        <button onClick={() => { setCount(count + 1) }}>Click Me!</button>
         <SearchBox searchChange={onSearchChange} />
         <Scroll>
           <ErrorBoundary>
